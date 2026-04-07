@@ -62,8 +62,8 @@ async function main() {
 
   let client;
   try {
-    // Connect
-    const authConfig = { host, port, username };
+    // Connect (auto-accept host key for first connection)
+    const authConfig = { host, port, username, hostVerifier: () => true };
     if (password) authConfig.password = password;
 
     client = await Client(authConfig);
